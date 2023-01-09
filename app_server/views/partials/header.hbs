@@ -1,0 +1,41 @@
+<div id="header">
+    <div id="logo">
+        <a href='/'><img src="images/logo.png" alt="LOGO" height="100" width="200"></a>
+    </div>
+    <div id="navigation">
+        <ul>
+            <li id="_button">
+                <a href='/'>Home</a>
+            </li>
+            <li id="travel_button">
+                <a href='/travel'>Travel</a>
+            </li>
+            <li id="rooms_button">
+                <a href='/rooms'>Rooms</a>
+            </li>
+            <li id="meals_button">
+                <a href='/meals'>Meals</a>
+            </li>
+            <li id="news_button">
+                <a href='/news'>News</a>
+            </li>
+            <li id="about_button">
+                <a href='/about'>About</a>
+            </li>
+            <li id="contact_button">
+                <a href='/contact'>Contact</a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        // we are reusing static html header so the selection visual no longer worked, as it was different for each page
+        // this updates the selected item based on page name
+        function getSelected() {
+            // get file name on server https://stackoverflow.com/questions/16611497/how-can-i-get-the-name-of-an-html-page-in-javascript
+            var pageName = location.href.split("/").slice(-1); 
+            document.getElementById(pageName + "_button").classList.add("selected");
+        }
+    </script>
+    <body onload = "getSelected()">
+
+</div>

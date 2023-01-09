@@ -9,36 +9,7 @@
 <body>
 	<div id="background">
 		<div id="page">
-			<div id="header">
-				<div id="logo">
-					<a href="index.html"><img src="images/logo.png" alt="LOGO" height="100" width="200"></a>
-				</div>
-				<div id="navigation">
-					<ul>
-						<li class="selected">
-							<a href="index.html">Home</a>
-						</li>
-						<li>
-							<a href="travel.html">Travel</a>
-						</li>
-						<li>
-							<a href="rooms.html">Rooms</a>
-						</li>
-						<li>
-							<a href="meals.html">Meals</a>
-						</li>
-						<li>
-							<a href="news.html">News</a>
-						</li>
-						<li>
-							<a href="about.html">About</a>
-						</li>
-						<li>
-							<a href="contact.html">Contact</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+			{{> header}}
 			<div id="contents">
 				<div id="adbox">
 					<img src="images/sea-sound.jpg" alt="Img">
@@ -54,14 +25,14 @@
 								<h3>Latest Blog</h3>
 								<ul>
 									<li>
-										<h4><a href="news.html">2023 Best Beaches Contest Winners</a></h4>
+										<h4><a href='/news'>2023 Best Beaches Contest Winners</a></h4>
 										<span>April 02, 2023</span>
 										<p>
 											Integer magna leo, posuere et dignissim vitae, porttitor at odio. Pellentesque a metus nec magna placerat volutpat. Nunc nisi mi, elementum sit amet...
 										</p>
 									</li>
 									<li>
-										<h4><a href="news.html">Top 10 Diving Spots</a></h4>
+										<h4><a href='/news'>Top 10 Diving Spots</a></h4>
 										<span>May 29, 2023</span>
 										<p>
 											Maecenas scelerisque odio quis arcu fringilla malesuada. Nulla facilisi. In libero nulla, fermentum ut pretium ac, pharetra et eros...
@@ -84,7 +55,7 @@
 				</div>
 				<div id="sidebar">
 					<div class="section">
-						<a href="rooms.html"><img src="images/rooms.png" alt="Img"></a>
+						<a href='/rooms'><img src="images/rooms.png" alt="Img"></a>
 					</div>
 					<div class="section">
 						<a href="dives.html"><img src="images/dive-site.png" alt="Img"></a>
@@ -95,39 +66,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="footer">
-			<div>
-				<ul class="navigation">
-					<li class="active">
-						<a href="index.html">Home</a>
-					</li>
-					<li>
-						<a href="travel.html">Travel</a>
-					</li>
-					<li>
-						<a href="rooms.html">Rooms</a>
-					</li>
-					<li>
-						<a href="meals.html">Meals</a>
-					</li>
-					<li>
-						<a href="news.html">News</a>
-					</li>
-					<li>
-						<a href="about.html">About</a>
-					</li>
-					<li>
-						<a href="contact.html">Contact</a>
-					</li>
-				</ul>
-				<div id="connect">
-					<a href="http://pinterest.com/fwtemplates/" target="_blank" class="pinterest"></a> <a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a> <a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a> <a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a>
-				</div>
-			</div>
-			<p>
-				© 2023 by Travlr Getaways. All Rights Reserved
-			</p>
-		</div>
+		{{> footer}}
 	</div>
 </body>
 </html>
