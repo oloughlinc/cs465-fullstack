@@ -1,6 +1,8 @@
 {
   "name": "travlr",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "Travlr Getaways Website",
+  "author": {"name": "Craig O'Loughlin"},
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
