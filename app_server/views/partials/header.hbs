@@ -33,7 +33,8 @@
         function getSelected() {
             // get file name on server https://stackoverflow.com/questions/16611497/how-can-i-get-the-name-of-an-html-page-in-javascript
             var pageName = location.href.split("/").slice(-1); 
-            document.getElementById(pageName + "_button").classList.add("selected");
+            document.getElementById(pageName + "_button").classList.add("selected"); // header
+            document.getElementById(pageName + "_f_button").classList.add("active"); // footer
         }
     </script>
     <body onload = "getSelected()">
