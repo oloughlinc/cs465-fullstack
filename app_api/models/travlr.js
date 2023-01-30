@@ -14,5 +14,4 @@ const tripSchema = new mongoose.Schema({
 });
 mongoose.model('trips', tripSchema); // compile the schema
 
-// I am not entirely sure what this does, even after reading doc, but it is recommended false by default per deprecation warning
-mongoose.set('strictQuery', false); 
+

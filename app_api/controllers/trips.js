@@ -6,6 +6,17 @@ const mongoose = require('mongoose');
 const model = mongoose.model('trips');
 
 // GET: /trips (find all trips)
+/**
+ * @swagger
+ * /api/trips:
+ *      get:
+ *          description: Get all information on all trips stored in the database.
+ *          responses:
+ *              200:
+ *                  description: Query successful, returns JSON trip data
+ *              404:
+ *                  description: Nothing found, or an error occurred during the query. Returns JSON error message.
+ */
 const tripsList = async (req, res) => {
     model
         .find({}) // command find all
@@ -27,6 +38,23 @@ const tripsList = async (req, res) => {
 };
 
 // GET /trips/code/:code (find one by code)
+/**
+ * @swagger
+ * /api/trips/code/{code}:
+ *      get:
+ *          description: Get all details of a single trip by unique identifier code.
+ *          parameters:
+ *              - name: code
+ *                in: path
+ *                description: A unique ID code for a trip
+ *                required: true
+ *                type: string
+ *          responses:
+ *              200:
+ *                  description: Query successful, returns JSON trip data
+ *              404:
+ *                  description: Nothing found, or an error occurred during the query. Returns JSON error message.
+ */
 const tripByCode = async (req, res) => {
     model
         .find({'code' : req.params.code})

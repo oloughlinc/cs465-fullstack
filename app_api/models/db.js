@@ -5,6 +5,9 @@
 const mongoose = require('mongoose');
 const readLine = require('readline');
 
+// I am not entirely sure what this does, even after reading doc, but it is recommended false by default per deprecation warning
+mongoose.set('strictQuery', false); 
+
 const host = process.env.DB_HOST || '127.0.0.1';
 const conn_uri = `mongodb://${host}/travlr`;
 
@@ -65,6 +68,5 @@ async function main() {
 
 main().catch(console.log);
 
-// I am not entirely sure what this does, even after reading doc, but it is recommended false by default per deprecation warning
-mongoose.set('strictQuery', false); 
+
 

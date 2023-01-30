@@ -19,7 +19,7 @@ const roomsRouter = require('./app_server/routes/rooms');
 // api route handle
 const apiRouter = require('./app_api/routes/index');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
@@ -28,6 +28,10 @@ app.set('views', path.join(__dirname, 'app_server', 'views'));
 hbs.registerPartials(path.join(__dirname, 'app_server', 'views/partials'));
 
 app.set('view engine', 'hbs');
+
+// setup swagger docs and UI
+const swaggerConfig = require('./app_api/controllers/swagger_config'); 
+app.use('/api-docs', swaggerConfig.swaggerUI.serve, swaggerConfig.swaggerUI.setup(swaggerConfig.swaggerDocs));
 
 app.use(logger('dev'));
 app.use(express.json());
