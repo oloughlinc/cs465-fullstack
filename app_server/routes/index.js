@@ -1,14 +1,41 @@
 var express = require('express');
-var router = express.Router();
-const ctrlMain = require('../controllers/main'); // import controller module
+const router = express.Router();
 
-/* GET home page. */
-/*router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-}); 
-router.get takes a route: '/' is home location (no route) and a function, in this case, render index.html
-this is controller logic (deciding a view based on request), so it is moved to another location, and now we reference the function from there
-*/
-router.get('/', ctrlMain.index);
+// import controller modules
+const homeController = require('../controllers/home'); 
+const aboutController = require('../controllers/about');
+const contactController = require('../controllers/contact');
+const mealsController = require('../controllers/meals');
+const newsController = require('../controllers/news');
+const roomsController = require('../controllers/rooms');
+const travelController = require('../controllers/travel');
+
+router
+  .route('/')
+  .get(homeController.index);
+
+router
+  .route('/about')
+  .get(aboutController.about);
+
+router
+  .route('/contact')
+  .get(contactController.contact);
+
+router
+  .route('/meals')
+  .get(mealsController.meals)
+
+router
+  .route('/news')
+  .get(newsController.news)
+
+router
+  .route('/rooms')
+  .get(roomsController.rooms)
+
+router
+  .route('/travel')
+  .get(travelController.getTravelList);
 
 module.exports = router;
