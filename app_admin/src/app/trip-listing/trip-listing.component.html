@@ -1,0 +1,9 @@
+<!-- test display of test data, raw json -->
+<!-- <pre>{{ trips | json }}</pre> -->
+
+<div class="row">
+    {{message}}
+    <div *ngFor="let trip of trips">
+        <app-trip-card [trip]="trip" class="card-deck mt-2"></app-trip-card>
+    </div>
+</div>
