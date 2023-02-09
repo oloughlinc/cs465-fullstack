@@ -1,6 +1,10 @@
 <!-- test display of test data, raw json -->
 <!-- <pre>{{ trips | json }}</pre> -->
 
+<div>
+    <button (click)="addTrip()" class="btn btn-info">Add Trip</button>
+</div>
+
 <div class="row">
     {{message}}
     <div *ngFor="let trip of trips">

@@ -1,0 +1,24 @@
+<div class="col-md-3">
+    <h2 class="text-center">Add Trip</h2>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+        <!--Angular 13+: dictionary values accessed using ['val'] -->
+        <!-- dynamic assignment using ex. [placeholder] instead placeholder-->
+        <!-- ? optional chaining won't do the operation if value is null -->
+
+        <!-- for loop make formItems number of fields-->
+        <div class="form-group" *ngFor="let item of formItems">
+            <label>{{item['label']}}</label>
+            <input type="text" [formControlName]="item['name']"
+                [placeholder]="item['label']" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f[item['name']].errors }">
+                <div *ngIf="submitted && f[item['name']].errors">
+                    <div *ngIf="f[item['name']]?.errors?.['required']">
+                        {{item['label']}} is required
+                    </div>
+                </div>
+        </div>
+
+        <button type="submit" class="btn btn-info">Save</button>
+    </form>
+</div>

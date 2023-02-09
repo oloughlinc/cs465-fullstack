@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from "@angular/router";
+
 // for testing
 // import { trips } from '../data/trips';
+
 import { TripDataService } from '../services/trip-data.service';
 import { Trip } from '../models/trip';
 
@@ -11,7 +14,6 @@ import { Trip } from '../models/trip';
   providers: [TripDataService]
 })
 
-// NOTE!!!
 // i had no luck even getting the starter page up with
 // the very outdate angular v6 so am using the latest version
 
@@ -23,13 +25,16 @@ export class TripListingComponent {
   trips: Trip[] = [];
   message: string = '';
 
-  constructor(private tripDataService: TripDataService) {}
+  constructor(
+    private tripDataService: TripDataService,
+    private router: Router
+    ) {}
 
   private getTrips(): void {
     console.log('Inside TripListingComponent#getTrips');
     this.message = 'Searching for trips';
     this.tripDataService.getTrips().subscribe(this.onGetTrips);
-    // unsubscribe?
+    // unsubscribe needed?
   }
 
   // https://angular.io/guide/observables
@@ -44,6 +49,11 @@ export class TripListingComponent {
     complete: () => {
       this.message = this.trips.length > 0 ? '' : 'No trips found';
     }
+  }
+
+  // move to different component
+  protected addTrip(): void {
+    this.router.navigate(['add-trip']);
   }
   
   // call get trips when initializing this component

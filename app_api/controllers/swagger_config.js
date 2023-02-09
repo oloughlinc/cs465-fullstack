@@ -9,7 +9,7 @@ const options = {
         openapi: '3.0.0',
         info: {
             title: 'Travlr API',
-            version: '0.5.0',
+            version: '0.6.0',
         },
     },
     apis: ['./app_api/controllers/trips.js'],
