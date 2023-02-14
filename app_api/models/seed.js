@@ -7,6 +7,8 @@ const seed = async function() {
     const trip = mongoose.model('trips');
     await trip.deleteMany(); // remove all from this collection
     await trip.insertMany(trips); // enter data from trips.json
+    const users = mongoose.model('users');
+    //await users.deleteMany();
 }
 
 module.exports = {seed};

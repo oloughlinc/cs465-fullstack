@@ -9,10 +9,10 @@ const options = {
         openapi: '3.0.0',
         info: {
             title: 'Travlr API',
-            version: '0.6.0',
+            version: '0.7.0',
         },
     },
-    apis: ['./app_api/controllers/trips.js'],
+    apis: ['./app_api/controllers/trips.js', './app_api/routes/index.js'],
 };
 
 const swaggerDocs = swaggerJSDoc(options);

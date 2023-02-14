@@ -13,6 +13,7 @@ const conn_uri = `mongodb://${host}/travlr`;
 
 const {seed} = require('./seed'); // instructions for populating database on startup for testing
 require('./travlr'); // mongoose schema
+require('./user');
 
 mongoose.connection.on('connected', () => {
   console.log('connected');
