@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 // i had no luck even getting the starter page up with
 // the very outdate angular v6 so am using the latest version
@@ -6,18 +6,24 @@ import { Injectable } from '@angular/core';
 // using code from here instead
 // https://angular.io/guide/http
 
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { Trip } from '../models/trip';
+import { BROWSER_STORAGE } from '../models/storage';
+import { ErrorsService } from './errors.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TripDataService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    @Inject(BROWSER_STORAGE) private storage: Storage,
+    private errors: ErrorsService,
+    ) { }
 
   private apiBaseUrl = 'http://localhost:3000/api/';
   private tripsURL = `${this.apiBaseUrl}trips`;
@@ -28,7 +34,7 @@ export class TripDataService {
     return this.http
       .get<Trip[]>(this.tripsURL, {observe: 'body', responseType: 'json'})
       .pipe(
-        catchError(this.handleError)
+        catchError(this.errors.handleError)
       );
  }
 
@@ -38,7 +44,7 @@ export class TripDataService {
   return this.http
     .get<Trip>(`${this.tripsURL}/code/${tripCode}`, {observe: 'body', responseType: 'json'})
     .pipe(
-      catchError(this.handleError)
+      catchError(this.errors.handleError)
     );
 }
 
@@ -48,7 +54,7 @@ export class TripDataService {
     return this.http
       .post<Trip>(this.tripsURL, formData)
       .pipe(
-        catchError(this.handleError)
+        catchError(this.errors.handleError)
       );
   }
 
@@ -59,25 +65,8 @@ export class TripDataService {
     return this.http
       .put<Trip>(`${this.tripsURL}/code/${formData.code}`, formData)
       .pipe(
-        catchError(this.handleError)
+        catchError(this.errors.handleError)
       )
   }
 
-  private handleError(error: HttpErrorResponse) {
-    
-    // we fed this function into the pipeline for the observable 'blueprints' above
-    // that will be called on error
-    // https://angular.io/guide/http#error-handling
-
-    // no response
-    if (error.status === 0) {
-      console.error('A client-side or network error has occurred:', error.error);
-    } else {
-      // got a response other than 200
-      console.error(
-        `Backend returned code ${error.status}, body was: `, error.error);
-    }
-    // Either way, return an error object
-    return throwError(() => new Error('Something bad happened, please try again later.'));
-  }
 }

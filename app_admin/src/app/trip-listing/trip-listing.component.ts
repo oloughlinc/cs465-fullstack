@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 
 import { TripDataService } from '../services/trip-data.service';
 import { Trip } from '../models/trip';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-trip-listing',
@@ -27,7 +28,8 @@ export class TripListingComponent {
 
   constructor(
     private tripDataService: TripDataService,
-    private router: Router
+    private router: Router,
+    private auth: AuthenticationService,
     ) {}
 
   private getTrips(): void {
@@ -59,6 +61,10 @@ export class TripListingComponent {
   // call get trips when initializing this component
   ngOnInit(): void {
     this.getTrips();
+  }
+
+  protected isLoggedIn(): boolean {
+    return this.auth.isLoggedIn();
   }
 
 }

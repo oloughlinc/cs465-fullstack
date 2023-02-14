@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { Trip } from '../models/trip';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-trip-card',
@@ -13,8 +15,13 @@ export class TripCardComponent {
     @Input('trip') trip: any;
 
     constructor(
-      private router: Router
+      private router: Router,
+      private auth: AuthenticationService,
     ) { }
+
+    protected isLoggedIn(): boolean {
+      return this.auth.isLoggedIn();
+    }
 
     protected editTrip(trip: Trip): void {
       localStorage.removeItem("tripCode");
