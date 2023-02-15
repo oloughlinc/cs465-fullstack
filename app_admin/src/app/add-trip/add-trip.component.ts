@@ -52,7 +52,7 @@ export class AddTripComponent implements OnInit {
       this.tripService.addTrip(this.addForm.value)
       .subscribe( data => {
         console.log(data);
-        this.router.navigate(['']); // go home page
+        this.router.navigate(['list-trips']); // go home page
       })
     }
   }

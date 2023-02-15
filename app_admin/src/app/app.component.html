@@ -1,15 +1,20 @@
-<!--
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-   <a class="navbar-brand" href="#">{{ title }}</a>
-  </div>
-</nav>
--->
 <app-navbar></app-navbar>
 
+<div class="container-fluid" style="padding: 0px;">
+  <div class="row">
 
-<div class="container">
-  <!-- place html from the router, the router will display correct component per pathing -->
-  <router-outlet></router-outlet>
+    <div class="col" style="flex-grow: 1; margin: 0px; min-width: 180px;">
+      <app-sidebar></app-sidebar>
+    </div>
+
+    <div class="col" style="flex-grow: 6;">
+      <div style="padding:50px;">
+      <router-outlet></router-outlet>
+    </div>
+    </div>
+  </div>
 </div>
+
+
+
   

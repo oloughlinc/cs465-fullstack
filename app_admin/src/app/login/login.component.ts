@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('list-trips');
     },
     error: (err: Error) => {
-      this.formError = err.message; // was thrown by errorService
+      this.formError = 'Invalid Credentials'; // error was thrown by errorService
     }
   }
 

@@ -26,6 +26,12 @@ export class TripListingComponent {
   trips: Trip[] = [];
   message: string = '';
 
+  Views = {
+    Card: "card",
+    List: "list",
+  };
+  currentView = this.Views.Card;
+
   constructor(
     private tripDataService: TripDataService,
     private router: Router,
@@ -50,6 +56,14 @@ export class TripListingComponent {
     },
     complete: () => {
       this.message = this.trips.length > 0 ? '' : 'No trips found';
+    }
+  }
+
+  protected toggleView() {
+    if (this.currentView === this.Views.Card) {
+      this.currentView = this.Views.List;
+    } else {
+      this.currentView = this.Views.Card;
     }
   }
 

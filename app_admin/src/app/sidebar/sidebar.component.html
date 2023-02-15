@@ -1,0 +1,12 @@
+<div class="d-flex flex-column text-white bg-primary" style="width: auto; min-height: 85vh; height: 100%; text-align: center;">
+    <a class="nav-link" routerLink="list-trips" style="color: white;">Trips</a>
+    <div *ngIf="isLoggedIn()">
+        <a class="nav-link" routerLink="add-trip" style="color: white;">Add a Trip</a>
+    </div>
+    <div *ngIf="!isLoggedIn()">
+        <a class="nav-link" routerLink="login" style="color: white;">Login</a>
+    </div>
+    <div *ngIf="isLoggedIn()">
+        <a class="nav-link" (click)="onLogout()" routerLink="" style="color: white;">Logout</a>
+    </div>
+</div>

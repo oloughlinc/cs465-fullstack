@@ -6,7 +6,7 @@ import { Inject, Injectable } from '@angular/core';
 // using code from here instead
 // https://angular.io/guide/http
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -28,6 +28,13 @@ export class TripDataService {
   private apiBaseUrl = 'http://localhost:3000/api/';
   private tripsURL = `${this.apiBaseUrl}trips`;
 
+  private authHeader(): Record<any, HttpHeaders> {
+    return {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.storage.getItem('travlr-token')}`})
+    };
+  }
+
   // API CALL: GET TRIPS
   public getTrips(): Observable<Trip[]> {
     console.log('Inside TripDataService#getTrips');
@@ -48,22 +55,21 @@ export class TripDataService {
     );
 }
 
- // API CALL: POST NEW TRIP
+ // API CALL: POST NEW TRIP (requires bearer token)
   public addTrip(formData: Trip): Observable<Trip> {
-    console.log('Inside TripDataService#addTrip');
+
     return this.http
-      .post<Trip>(this.tripsURL, formData)
+      .post<Trip>(this.tripsURL, formData, this.authHeader())
       .pipe(
         catchError(this.errors.handleError)
       );
   }
 
-  // API CALL: UPDATE TRIP
+  // API CALL: UPDATE TRIP (requires bearer token)
   public updateTrip(formData: Trip) : Observable<Trip> {
-    console.log('Inside TripDataService#updateTrip');
-    console.log(formData);
+
     return this.http
-      .put<Trip>(`${this.tripsURL}/code/${formData.code}`, formData)
+      .put<Trip>(`${this.tripsURL}/code/${formData.code}`, formData, this.authHeader())
       .pipe(
         catchError(this.errors.handleError)
       )
