@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TripTableComponent } from './trip-table/trip-table.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [

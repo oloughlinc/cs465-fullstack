@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -11,7 +12,12 @@ export class SidebarComponent {
 
   constructor(
     private authService: AuthenticationService,
+    private router: Router,
   ) { }
+
+  protected getUrl(): string {
+    return this.router.url;
+  }
 
   protected isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
@@ -20,5 +26,4 @@ export class SidebarComponent {
   protected onLogout(): void {
     this.authService.logout();
   }
-
 }

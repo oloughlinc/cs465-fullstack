@@ -15,15 +15,24 @@ export class ErrorsService {
     // that will be called on error
     // https://angular.io/guide/http#error-handling
 
-    // no response
+    var errMessage: string = '';
+
+    // 0 = no response
     if (error.status === 0) {
-      console.error('A client-side or network error has occurred:', error.error);
+      errMessage = 'A client-side or network error has occurred.';
+      console.error(error.message);
+
+    // 401 = unauthorized
+    } else if (error.status === 401) {
+      errMessage = 'Invalid Credentials';
+
+    // all else
     } else {
-      // got a response other than 200
+      errMessage = `Backend returned code ${error.status}, body was: ` + error.message;
       console.error(
-        `Backend returned code ${error.status}, body was: `, error.error);
+        `Backend returned code ${error.status}, body was: `, error.message);
     }
     // Either way, return an error object
-    return throwError(() => new Error('Something bad happened, please try again later.'));
+    return throwError(() => new Error(errMessage));
   }
 }
