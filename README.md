@@ -14,7 +14,7 @@ This project was built iteratively over 7 weeks, and refactored multiple times a
 
 # Testing
 
-Most of the testing here was done manually due to the size of the project and the allotted timeframe. Testing was performed each week along with the next development iteration. UI testing of both the static website and Angular SPA was performed along with testing the API using the Postman HTTP tool. As different features such as security were added it was especially important to continually retest previously built components that were now implementing them. Security authorization was built using web tokens (JWT format) issued by the server API.
+Testing was performed each week along with the next development iteration. UI testing of both the static website and Angular SPA was performed along with testing the API using the Postman HTTP tool. As different features such as security were added it was especially important to continually retest previously built components that were now implementing. Security authorization was built using web tokens (JWT format) issued by the server API.
 
 # Reflection
 
