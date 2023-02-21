@@ -1,0 +1,28 @@
+
+    <div class="col-md-3">
+        <h2 class="text-left">Edit Trip</h2>
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()" style="min-width: 800px; border: 2px solid; padding: 50px;">
+
+            <!--Angular 13+: dictionary values accessed using ['val'] -->
+            <!-- dynamic assignment using ex. [placeholder] instead placeholder-->
+            <!-- ? optional chaining won't do the operation if value is null -->
+
+            <!-- for loop make formItems number of fields-->
+            <div class="form-group row" *ngFor="let item of formItems">
+                <label class="col-sm-3 col-form-label">{{item['label']}}:</label>
+                <div class="col-sm-6">
+                    <input type="text" [formControlName]="item['name']"
+                        [placeholder]="item['label']" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f[item['name']].errors }">
+                        <div *ngIf="submitted && f[item['name']].errors">
+                            <div *ngIf="f[item['name']]?.errors?.['required']">
+                                {{item['label']}} is required
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-info" style="background-color: dodgerblue;">Save</button>
+        </form>
+    </div>
+

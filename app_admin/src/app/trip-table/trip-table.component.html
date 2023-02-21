@@ -1,0 +1,32 @@
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Length</th>
+        <th scope="col">Start</th>
+        <th scope="col">Resort</th>
+        <th scope="col">Per Person</th>
+        <th *ngIf="isLoggedIn()" scope="col">    </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let trip of trips" id="trip['code']">
+        <td><b>{{trip.code}}</b></td>
+        <td>{{trip.name}}</td>
+        <td>{{trip.length}}</td>
+        <td>{{trip.start}}</td>
+        <td>{{trip.resort}}</td>
+        <td>{{trip.perPerson}}</td>
+        <!-- I have seen javascript:void(0) often but never knew why it would be used
+              it can be used to set a link to go nowhere but instead call code -->
+        <td *ngIf="isLoggedIn()"><a href="javascript:void(0)" (click)="onEditClicked(trip['code'])">Edit</a></td>
+      </tr>
+    </tbody>
+</table>
+
+
+
+
+
+

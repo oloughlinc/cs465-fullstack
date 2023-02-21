@@ -1,0 +1,26 @@
+<!-- test display of test data, raw json -->
+<!-- <pre>{{ trips | json }}</pre> -->
+
+{{message}}
+
+<div *ngIf="currentView === Views['Card']">
+    <button type="button" class="btn btn-primary btn-sm" (click)="toggleView()" style="margin: 5px;">Card View</button>
+    <button type="button" class="btn btn-secondary btn-sm" (click)="toggleView()">List View</button>
+    <button *ngIf="isLoggedIn()" type="button" class="btn btn-primary btn-sm" (click)="addTrip()" style="float: right;">+ New Trip</button>
+    
+    <div style="padding: 5px"></div>
+
+    <div class="row">
+        <div *ngFor="let trip of trips">
+            <app-trip-card [trip]="trip" class="card-deck mt-2"></app-trip-card>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="currentView === Views['List']">
+    <button type="button" class="btn btn-secondary btn-sm" (click)="toggleView()" style="margin: 5px;">Card View</button>
+    <button type="button" class="btn btn-primary btn-sm" (click)="toggleView()">List View</button>
+    <button *ngIf="isLoggedIn()" type="button" class="btn btn-primary btn-sm" (click)="addTrip()" style="float: right;">+ New Trip</button>
+    <div style="padding: 5px"></div>
+    <app-trip-table [trips]="trips"></app-trip-table>
+</div>

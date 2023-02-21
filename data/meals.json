@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Seafood Special",
+        "image": "seafoods.jpg",
+        "title": "Fried Salmon Special",
+        "description": " I'm a product overview. Here you can write more information about your product. Buyers like to know ... "
+    }, {
+        "name": "Sumptuous Desserts",
+        "image": "desserts.jpg",
+        "title": "Choco Ice Cream Sandwich",
+        "description": " I'm a product overview. Here you can write more information about your product. Buyers like to know ... "
+    }, {
+        "name": "Buffet",
+        "image": "buffet.jpg",
+        "title": "Mixed Buffet",
+        "description": " I'm a product overview. Here you can write more information about your product. Buyers like to know ... "
+    }
+]

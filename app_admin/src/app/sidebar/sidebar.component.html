@@ -1,0 +1,38 @@
+<div class="d-flex flex-column text-dark bg-light" style="width: auto; min-height: 85vh; height: 100%; text-align: center;">
+
+    <div style="margin: 20px;"><h2>MENU</h2></div>
+    
+<!-- Basic Text Links
+    <a class="nav-link" routerLink="list-trips" style="color: black;">Trips</a>
+    <div *ngIf="isLoggedIn()">
+        <a class="nav-link" routerLink="add-trip" style="color: black;">Add a Trip</a>
+    </div>
+    <div *ngIf="!isLoggedIn()">
+        <a class="nav-link" routerLink="login" style="color: black;">Login</a>
+    </div>
+    <div *ngIf="isLoggedIn()">
+        <a class="nav-link" (click)="onLogout()" routerLink="" style="color: black;">Logout</a>
+    </div>
+-->
+
+<!-- Dynamic List View-->
+    <a routerLink="list-trips" class="list-group-item list-group-item-action" 
+    [ngClass]="getUrl() === '/list-trips' ? 'active' : ''" >
+        View all trips
+        </a>
+
+    <div *ngIf="isLoggedIn()" class="list-group">  
+        <a routerLink="add-trip" class="list-group-item list-group-item-action"
+        [ngClass]="getUrl() === '/add-trip' ? 'active' : ''" 
+        >Add a trip</a>
+        <a routerLink="" (click)="onLogout()" class="list-group-item list-group-item-action">Logout</a>
+    </div>
+
+    <div *ngIf="!isLoggedIn()" class="list-group">
+        <a routerLink="add-trip" class="list-group-item list-group-item-action disabled">Add a trip</a>
+        <a routerLink="login" class="list-group-item list-group-item-action"
+        [ngClass]="getUrl() === '/login' ? 'active' : ''" 
+        >Login</a>
+    </div>
+
+</div>
